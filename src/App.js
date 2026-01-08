@@ -69,14 +69,15 @@ export default function GradeDashboard() {
       <div className="w-64 border-r border-gray-800 p-6">
         <h1 className="text-2xl font-bold text-[#D4AF37] mb-10">MY GRADE</h1>
         <nav className="space-y-4">
-          <button onClick={() => setActiveTab("dashboard")} className="flex items-center gap-3"> w-full p-2 rounded ${activeTab === 'dashboard' ? 'bg-[#D4AF37] text-black' : 'text-gray-400'}}>
-            <LayoutDashboard size={20} /> Dashboard
+          {/* تم تصحيح السطر 72 هنا */}
+          <button onClick={() => setActiveTab("dashboard")} className="flex items-center gap-3 w-full p-2 rounded">
+            <LayoutDashboard size={20} className={activeTab === 'dashboard' ? 'text-black' : 'text-gray-400'} /> Dashboard
           </button>
           <div className="pt-4 border-t border-gray-800">
             <p className="text-xs text-gray-500 mb-2 uppercase">Courses</p>
             {Object.keys(courses).map(name => (
               <button key={name} onClick={() => { setSelectedCourse(name); setActiveTab("courseDetails"); }} 
-                className={flex items-center gap-3 w-full p-2 text-sm ${selectedCourse === name ? 'text-[#D4AF37]' : 'text-gray-400'}}>
+                className={`flex items-center gap-3 w-full p-2 text-sm ${selectedCourse === name ? 'text-[#D4AF37]' : 'text-gray-400'}`}>
                 <BookOpen size={16} /> {name}
               </button>
             ))}
@@ -100,7 +101,7 @@ export default function GradeDashboard() {
             <div className="col-span-3 bg-gray-900 p-6 rounded-xl border border-gray-800 flex flex-col items-center justify-center">
               <Award size={48} className={getAplusColor(stats.remainingToAplus)} />
               <p className="mt-2 text-gray-400 text-sm">باقي لك على A+</p>
-              <span className={text-3xl font-bold ${getAplusColor(stats.remainingToAplus)}}>{stats.remainingToAplus}</span>
+              <span className={`text-3xl font-bold ${getAplusColor(stats.remainingToAplus)}`}>{stats.remainingToAplus}</span>
             </div>
 
             {/* 1- مقياس أعمال الترم (بدون الفاينل) */}
@@ -117,14 +118,14 @@ export default function GradeDashboard() {
               <p className="text-center text-2xl font-bold">{stats.currentTotal} / 50</p>
             </div>
 
-            {/* 2- أفضل الكويزات */}
+            {/* 2- أفضل الكويزات (تم تصحيح السطر 79 هنا) */}
             <div className="col-span-5 bg-gray-900 p-6 rounded-xl border border-gray-800">
               <p className="text-sm text-gray-400 mb-4">تحليل أفضل الكويزات</p>
               <ResponsiveContainer width="100%" height={150}>
                 <BarChart data={stats.processedQuizzes}>
                   <XAxis dataKey="type" hide />
                   <Tooltip contentStyle={{backgroundColor: '#111', border: '1px solid #D4AF37'}} />
-                  <Bar dataKey="obtained" fill="#D4AF37" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="obtained" fill="#D4AF37" radius={[10, 10, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
