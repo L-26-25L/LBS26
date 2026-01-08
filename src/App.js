@@ -69,7 +69,7 @@ export default function GradeDashboard() {
       <div className="w-64 border-r border-gray-800 p-6">
         <h1 className="text-2xl font-bold text-[#D4AF37] mb-10">MY GRADE</h1>
         <nav className="space-y-4">
-          <button onClick={() => setActiveTab("dashboard")} className={flex items-center gap-3 w-full p-2 rounded ${activeTab === 'dashboard' ? 'bg-[#D4AF37] text-black' : 'text-gray-400'}}>
+          <button onClick={() => setActiveTab("dashboard")} className="flex items-center gap-3"> w-full p-2 rounded ${activeTab === 'dashboard' ? 'bg-[#D4AF37] text-black' : 'text-gray-400'}}>
             <LayoutDashboard size={20} /> Dashboard
           </button>
           <div className="pt-4 border-t border-gray-800">
